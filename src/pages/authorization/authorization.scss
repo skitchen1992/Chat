@@ -101,6 +101,13 @@ select {
   border-radius: 4px;
   padding: 16px 12px;
 }
+.section-authorization__input--login:hover{
+  border: solid 1px $button_primary ;
+}
+.section-authorization__input--login:focus{
+  border: solid 1px $button_hover;
+  outline: none;
+}
 
 .section-authorization__input--password{
   margin-top: 12px;
@@ -108,6 +115,13 @@ select {
   border: solid 1px $second_color ;
   border-radius: 4px;
   padding: 16px 12px;
+}
+.section-authorization__input--password:hover{
+  border: solid 1px $button_primary ;
+}
+.section-authorization__input--password:focus{
+  border: solid 1px $button_hover;
+  outline: none;
 }
 
 .section-authorization__button--enter{
