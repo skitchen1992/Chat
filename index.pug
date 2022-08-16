@@ -5,12 +5,18 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title= title
+        link(rel="stylesheet" href="reset.scss")
+        link(rel="stylesheet" href="main.scss")
     body
-        h1.toll Hello Parcel!
-            p hi
-        script(type='module' src='./src/main.js')
+        header.header
+            nav.header__nav
+                ul.header__nav__ul
+                    li.header__nav-item
+                        a(href="src/pages/authorization/authorization.pug" target="_blank").nav-link authorization
+                    li.nav-item
+                        a(href="2").nav-link registration
+script(type='module' src='./src/index.js')
 
-        include src/components/Button/button
 
 
 
