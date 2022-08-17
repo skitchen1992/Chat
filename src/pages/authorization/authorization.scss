@@ -94,24 +94,29 @@ select {
   font-size: $font-size-h1;
 }
 
-.section-authorization__input--login{
-  margin-top: 32px;
-  width: 100%;
+.authorization__input-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.section-authorization__input--text{
+  width: 164px;
   border: solid 1px $second_color ;
   border-radius: 4px;
   padding: 16px 12px;
 }
-.section-authorization__input--login:hover{
+.section-authorization__input--text:hover{
   border: solid 1px $button_primary ;
 }
-.section-authorization__input--login:focus{
+.section-authorization__input--text:focus{
   border: solid 1px $button_hover;
   outline: none;
 }
 
 .section-authorization__input--password{
-  margin-top: 12px;
-  width: 100%;
+  width: 164px;
   border: solid 1px $second_color ;
   border-radius: 4px;
   padding: 16px 12px;
@@ -132,7 +137,7 @@ select {
   background-color: $button_primary;
   padding: 8px 16px;
   color: white;
-  width: 100%;
+  width: 164px;
 }
 .section-authorization__button--enter:hover{
   background-color: $button_hover;
