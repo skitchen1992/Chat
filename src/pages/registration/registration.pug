@@ -1,0 +1,57 @@
+- const titleRegistration = "Регистрация"
+- const buttonEnter = "Войти"
+- const buttonRegistration = "Зарегистрироваться"
+- const buttonNotRegistered = "Еще не зарегестрированы?"
+- const placeholderLogin = "Логин"
+- const placeholderPassword = "Пароль"
+- const placeholderPasswordElse = "Пароль (еще раз)"
+- const placeholderMail = "Почта"
+- const placeholderName = "Имя"
+- const placeholderSurname = "Фамилия"
+- const placeholderTelNumber = "Телефон"
+
+section.section-registration
+    .section-registration__main
+        h1.section-registration__title= titleRegistration
+        .registration__input-wrap
+            input(
+                type="text"
+                name='agreement'
+                placeholder= placeholderMail
+            ).section-registration__input--text
+            input(
+                type="text"
+                name='agreement'
+                placeholder= placeholderLogin
+            ).section-registration__input--text
+            input(
+                type="text"
+                name='agreement'
+                placeholder= placeholderName
+            ).section-registration__input--text
+            input(
+                type="text"
+                name='agreement'
+                placeholder= placeholderSurname
+            ).section-registration__input--text
+            input(
+                type="text"
+                name='agreement'
+                placeholder= placeholderTelNumber
+            ).section-registration__input--text
+            input(
+                type="password"
+                name='password'
+                placeholder= placeholderPassword
+            ).section-registration__input--password
+            input(
+                type="password"
+                name='password'
+                placeholder= placeholderPasswordElse
+            ).section-registration__input--password
+        button.section-registration__button--enter= buttonRegistration
+        a.section-registration__notRegistered(href='#')= buttonEnter
+
+
+script(type='module' src='registration.js')
+
