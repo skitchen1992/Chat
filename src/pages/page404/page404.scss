@@ -1,0 +1,39 @@
+$button_primary: #2083F3;
+$button_hover: #1968C2;
+$font-weight-bold: 600;
+$font-size-h1: 40px;
+
+.section-page404 {
+  display: flex;
+  width: 100%;
+}
+
+.section-page404__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.section-page404__error {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.section-page404__error-message {
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.section-page404__backToChat {
+  text-decoration: none;
+  margin-top: 32px;
+  color: $button_primary;
+}
+
+.section-page404__backToChat:hover {
+  color: $button_hover;
+}
