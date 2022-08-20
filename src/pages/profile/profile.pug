@@ -1,0 +1,34 @@
+.profile
+    .profile__action-bar
+        button.profile__action_button(href='#')
+            img(src='../../../icons/arrow.png')
+    .profile__content
+        .profile__wrap
+            .profile__account-logo
+                img(src='../../../icons/account.png')
+            .profile__name Никита
+            .profile__info
+                .profile__info__item
+                    .profile__info__item__label Почта
+                    .profile__info__item__value pochta@yandex.ru
+                .profile__info__item
+                    .profile__info__item__label Логин
+                    .profile__info__item__value nik
+                .profile__info__item
+                    .profile__info__item__label Имя
+                    .profile__info__item__value Никита
+                .profile__info__item
+                    .profile__info__item__label Фамилия
+                    .profile__info__item__value Лав
+                .profile__info__item
+                    .profile__info__item__label Телефон
+                    .profile__info__item__value +79999999999
+            .profile__actions
+                .profile__actions__wrap
+                    a.profile__actions__button(href='#') Изменить данные
+                .profile__actions__wrap
+                    a.profile__actions__button(href='#') Изменить пароль
+                .profile__actions__wrap
+                    a.profile__actions__button__secondary(href='#') Выйти
+
+script(type='module' src='profile.js')

@@ -1,56 +1,55 @@
-- const titleRegistration = "Регистрация"
-- const buttonEnter = "Войти"
-- const buttonRegistration = "Зарегистрироваться"
-- const buttonNotRegistered = "Еще не зарегестрированы?"
-- const placeholderLogin = "Логин"
-- const placeholderPassword = "Пароль"
-- const placeholderPasswordElse = "Пароль (еще раз)"
-- const placeholderMail = "Почта"
-- const placeholderName = "Имя"
-- const placeholderSurname = "Фамилия"
-- const placeholderTelNumber = "Телефон"
+- const title_registration = "Регистрация"
+- const button_enter = "Войти"
+- const button_registration = "Зарегистрироваться"
+- const placeholder_login = "Логин"
+- const placeholder_password = "Пароль"
+- const placeholder_password_else = "Пароль (еще раз)"
+- const placeholder_mail = "Почта"
+- const placeholder_name = "Имя"
+- const placeholder_surname = "Фамилия"
+- const placeholder_tel_number = "Телефон"
 
-section.section-registration
-    .section-registration__main
-        h1.section-registration__title= titleRegistration
+section.registration
+    .registration__main
+        h1.registration__title= title_registration
         .registration__input-wrap
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderMail
-            ).section-registration__input--text
+                name='email'
+                placeholder= placeholder_mail
+            ).registration__input--text
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderLogin
-            ).section-registration__input--text
+                name='login'
+                placeholder= placeholder_login
+            ).registration__input--text
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderName
-            ).section-registration__input--text
+                name='first_name'
+                placeholder= placeholder_name
+            ).registration__input--text
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderSurname
-            ).section-registration__input--text
+                name='second_name'
+                placeholder= placeholder_surname
+            ).registration__input--text
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderTelNumber
-            ).section-registration__input--text
+                name='phone'
+                placeholder= placeholder_tel_number
+            ).registration__input--text
             input(
                 type="password"
                 name='password'
-                placeholder= placeholderPassword
-            ).section-registration__input--password
+                placeholder= placeholder_password
+            ).registration__input--text
             input(
                 type="password"
                 name='password'
-                placeholder= placeholderPasswordElse
-            ).section-registration__input--password
-        button.section-registration__button--enter= buttonRegistration
-        a.section-registration__notRegistered(href='#')= buttonEnter
+                placeholder= placeholder_password_else
+            ).registration__input--text
+        button.registration__button--enter= button_registration
+        a.registration__button-enter(href='#')= button_enter
 
 
 script(type='module' src='registration.js')

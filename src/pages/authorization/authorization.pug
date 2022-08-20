@@ -1,25 +1,25 @@
-- const titleEnter = "Вход"
-- const buttonEnter = "Войти"
-- const buttonNotRegistered = "Еще не зарегестрированы?"
-- const placeholderLogin = "Логин"
-- const placeholderPassword = "Пароль"
+- const title_enter = "Вход"
+- const button_enter = "Войти"
+- const button_not_registered = "Еще не зарегестрированы?"
+- const placeholder_login = "Логин"
+- const placeholder_password = "Пароль"
 
-section.section-authorization
-    .section-authorization__main
-        h1.section-authorization__title= titleEnter
+section.authorization
+    .authorization__wrap
+        h1.authorization__title= title_enter
         .authorization__input-wrap
             input(
                 type="text"
-                name='agreement'
-                placeholder= placeholderLogin
-            ).section-authorization__input--text
+                name='login'
+                placeholder= placeholder_login
+            ).authorization__input--text
             input(
                 type="password"
                 name='password'
-                placeholder= placeholderPassword
-            ).section-authorization__input--password
-        button.section-authorization__button--enter= buttonEnter
-        a.section-authorization__notRegistered(href='#')= buttonNotRegistered
+                placeholder= placeholder_password
+            ).authorization__input--password
+        button.authorization__button--enter= button_enter
+        a.authorization__notRegistered(href='#')= button_not_registered
 
 
 script(type='module' src='authorization.js')
