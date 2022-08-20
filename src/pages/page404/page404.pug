@@ -1,13 +1,13 @@
-- const backToChat = "Назад к чатам"
-- const errorMessage = "Не туда попали"
-- const errorCode = "404"
+- const back_to_chat = "Назад к чатам"
+- const error_message = "Не туда попали"
+- const error_code = "404"
 
 
-section.section-page404
-    .section-page404__main
-        .section-page404__error= errorCode
-        .section-page404__error-message= errorMessage
-        a.section-page404__backToChat(href='#')= backToChat
+section.page404
+    .page404__wrap
+        .page404__error= error_code
+        .page404__error-message= error_message
+        a.page404__backToChat(href='#')= back_to_chat
 
 
 script(type='module' src='page404.js')
