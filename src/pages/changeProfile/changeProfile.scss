@@ -74,7 +74,7 @@ $button_hover: #1968C2;
 $font-weight-bold: 600;
 $second_color: #D9D9D9;
 
-.profile {
+.changeProfile {
   display: flex;
 
   &__action-bar {
@@ -158,32 +158,22 @@ $second_color: #D9D9D9;
 
     &__wrap {
       display: flex;
-      padding: 8px 0;
-      border-bottom: 1px solid $second_color;
-
-      &:last-child{
-        border: none;
-      }
+      justify-content: center;
     }
 
     &__button {
-      text-decoration: none;
-      color: $button_primary;
-      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font: inherit;
+      background-color: $button_primary;
+      padding: 8px 16px;
+      color: white;
+      width: 164px;
 
       &:hover {
-        color: $button_hover;
+        background-color: $button_hover;
       }
     }
 
-    &__button__secondary {
-      text-decoration: none;
-      color: $button_secondary;
-      cursor: pointer;
-
-      &:hover {
-        color: $button_secondary_hover;
-      }
-    }
   }
 }
