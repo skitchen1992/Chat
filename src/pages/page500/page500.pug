@@ -1,13 +1,13 @@
-- const backToChat = "Назад к чатам"
-- const errorMessage = "Мы уже фиксим"
-- const errorCode = "500"
+- const back_to_chat = "Назад к чатам"
+- const error_message = "Мы уже фиксим"
+- const error_code = "500"
 
 
-section.section-page500
-    .section-page500__main
-        .section-page500__error= errorCode
-        .section-page500__error-message= errorMessage
-        a.section-page500__backToChat(href='#')= backToChat
+section.page500
+    .page500__main
+        .page500__error= error_code
+        .page500__error-message= error_message
+        a.page500__backToChat(href='#')= back_to_chat
 
 
 script(type='module' src='page500.js')
