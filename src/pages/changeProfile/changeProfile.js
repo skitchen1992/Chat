@@ -1,1 +1,1 @@
-import'./changeProfile.scss'
+import "./changeProfile.scss";

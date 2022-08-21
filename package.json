@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel index.pug",
-    "start": "parcel build index.pug",
+    "dev": "parcel --port 3000 index.pug",
+    "build": "parcel build index.pug",
+    "start": "node server.js",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix"
   },

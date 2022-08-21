@@ -20,7 +20,8 @@ section.authorization
             ).authorization__input--password
         button.authorization__button--enter= button_enter
         a.authorization__notRegistered(href='#')= button_not_registered
-
+style
+    include ../../../reset.scss
 
 script(type='module' src='authorization.js')
 

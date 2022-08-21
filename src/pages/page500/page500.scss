@@ -1,7 +1,4 @@
-$button_primary: #2083F3;
-$button_hover: #1968C2;
-$font-weight-bold: 600;
-$font-size-h1: 40px;
+@import "src/styleVariables/styleVariables";
 
 .page500 {
   display: flex;

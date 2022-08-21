@@ -1,8 +1,4 @@
-$second_color: #D9D9D9;
-$font-weight-bold: 600;
-$font-size-h1: 40px;
-$button_primary: #2083F3;
-$button_hover: #1968C2;
+@import "src/styleVariables/styleVariables";
 
 .authorization {
   display: flex;
