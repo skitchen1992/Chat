@@ -1,1 +1,15 @@
-# sprint_1
+## Usage
+
+
+### Installation
+
+Install the dependencies
+
+```sh
+$ npm install
+```
+Run app
+
+```sh
+$ npm start
+```
