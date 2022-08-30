@@ -1,1 +1,1 @@
-import './page404.scss'
+import './page404.scss';

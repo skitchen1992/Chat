@@ -1,1 +1,1 @@
-import "./page500.scss";
+import './page500.scss';

@@ -1,1 +1,1 @@
-import "./authorization.scss";
+import './authorization.scss';

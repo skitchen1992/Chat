@@ -1,1 +1,1 @@
-import "./changePassword.scss";
+import './changePassword.scss';
