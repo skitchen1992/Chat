@@ -1,0 +1,58 @@
+- const title_registration = "Регистрация"
+- const button_enter = "Войти"
+- const button_registration = "Зарегистрироваться"
+- const placeholder_login = "Логин"
+- const placeholder_password = "Пароль"
+- const placeholder_password_else = "Пароль (еще раз)"
+- const placeholder_mail = "Почта"
+- const placeholder_name = "Имя"
+- const placeholder_surname = "Фамилия"
+- const placeholder_tel_number = "Телефон"
+
+section.registration
+    .registration__main
+        h1.registration__title= title_registration
+        .registration__input-wrap
+            input(
+                type="text"
+                name='email'
+                placeholder= placeholder_mail
+            ).registration__input--text
+            input(
+                type="text"
+                name='login'
+                placeholder= placeholder_login
+            ).registration__input--text
+            input(
+                type="text"
+                name='first_name'
+                placeholder= placeholder_name
+            ).registration__input--text
+            input(
+                type="text"
+                name='second_name'
+                placeholder= placeholder_surname
+            ).registration__input--text
+            input(
+                type="text"
+                name='phone'
+                placeholder= placeholder_tel_number
+            ).registration__input--text
+            input(
+                type="password"
+                name='password'
+                placeholder= placeholder_password
+            ).registration__input--text
+            input(
+                type="password"
+                name='password'
+                placeholder= placeholder_password_else
+            ).registration__input--text
+        button.registration__button--enter= button_registration
+        a.registration__button-enter(href='#')= button_enter
+
+style
+    include ../../../reset.scss
+
+script(type='module' src='registration.js')
+

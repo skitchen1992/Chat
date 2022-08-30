@@ -1,0 +1,72 @@
+@import "src/styleVariables/styleVariables";
+
+.registration {
+  display: flex;
+  width: 100%;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+
+  &__title {
+    color: $second_color;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-h1;
+  }
+
+  &__input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  &__input--text {
+    width: 164px;
+    border: solid 1px $second_color;
+    border-radius: 4px;
+    padding: 16px 12px;
+
+    &:hover {
+      border: solid 1px $button_primary;
+    }
+
+    &:focus {
+      border: solid 1px $button_hover;
+      outline: none;
+    }
+  }
+
+  &__button--enter {
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    margin-top: 16px;
+    background-color: $button_primary;
+    padding: 8px 16px;
+    color: white;
+    width: 164px;
+
+    &:hover {
+      background-color: $button_hover;
+    }
+  }
+
+  &__button-enter {
+    text-decoration: none;
+    margin-top: 32px;
+    color: $button_primary;
+
+    &:hover {
+      color: $button_hover;
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+- const back_to_chat = "Назад к чатам"
+- const error_message = "Мы уже фиксим"
+- const error_code = "500"
+
+
+section.page500
+    .page500__main
+        .page500__error= error_code
+        .page500__error-message= error_message
+        a.page500__backToChat(href='#')= back_to_chat
+
+style
+    include ../../../reset.scss
+
+script(type='module' src='page500.js')
