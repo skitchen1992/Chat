@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel --port 3000 index.pug",
     "build": "parcel build index.pug",
-    "start": "node server.js",
+    "start": "node server.ts",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix"
   },
