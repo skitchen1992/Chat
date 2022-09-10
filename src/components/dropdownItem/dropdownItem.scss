@@ -1,0 +1,20 @@
+@import "src/styleVariables/styleVariables";
+
+.dropdown__content {
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $backGroundInput;
+    }
+  }
+
+  &__label {
+    font-size: small;
+    padding: 0 8px;
+  }
+}

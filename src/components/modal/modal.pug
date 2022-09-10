@@ -1,10 +1,6 @@
-.modal#modal
-    .modal-content
-        span.close
-        .modal-content__modal-title text
-        .dialog-actions
-            button.modal-content__button button
-style
-    include ../../../reset.scss
+.modal-content
+    | !{buttonClose}
+    .modal-content__modal-title= label
+    .dialog-actions
+        | !{button}
 
-script(type='module' src='modal.js')

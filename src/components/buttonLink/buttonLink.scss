@@ -1,0 +1,22 @@
+@import "src/styleVariables/styleVariables";
+
+.buttonLink {
+  text-decoration: none;
+  color: $primary;
+
+  &:hover {
+    color: $hover;
+    cursor: pointer;
+  }
+}
+
+.buttonLinkWarm {
+  text-decoration: none;
+  color: $warm;
+  cursor: pointer;
+
+  &:hover {
+    color: $warm_hover;
+  }
+}
+

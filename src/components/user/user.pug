@@ -1,0 +1,11 @@
+.logo
+    img(src= logo)
+.content
+    .content__wrap
+        .content__wrap__name= name
+        .content__wrap__date= date
+    .content__wrap
+        .content__wrap__message= message
+        if numberOfMessages
+            .content__wrap__numberOfMessages
+                .content__wrap__numberOfMessages__value= numberOfMessages

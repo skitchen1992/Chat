@@ -1,0 +1,33 @@
+@import "src/styleVariables/styleVariables";
+
+.dropdown__content__bottom {
+  display: none;
+  border-radius: $borderRadius;
+  right: 0;
+  padding: 12px 8px;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown__content__bottom {
+  display: block;
+}
+
+.dropdown__content__top {
+  display: none;
+  border-radius: $borderRadius;
+  bottom: 48px;
+  padding: 12px 8px;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown__content__top {
+  display: block;
+}

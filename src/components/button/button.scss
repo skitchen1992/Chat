@@ -1,0 +1,49 @@
+@import "src/styleVariables/styleVariables";
+
+.button {
+  border: none;
+  border-radius: 4px;
+  background-color: $primary;
+  padding: 8px 16px;
+  color: white;
+
+  &:hover {
+    background-color: $hover;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabledColor;
+    cursor: default;
+    color: $second_color;
+  }
+}
+
+.buttonRound {
+  border-radius: 50%;
+  border: none;
+  height: 28px;
+  width: 28px;
+  background-color: $primary;
+  cursor: pointer;
+  color: white;
+
+  &:hover {
+    background-color: $hover;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabledColor;
+    cursor: default;
+    color: $second_color;
+  }
+}
+
+.buttonIcon {
+  border: none;
+  height: 36px;
+  width: 36px;
+  background-color: transparent;
+  cursor: pointer;
+}

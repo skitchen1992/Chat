@@ -1,0 +1,60 @@
+@import "src/styleVariables/styleVariables";
+
+.inputMedium {
+  border: solid 1px $second_color;
+  border-radius: 4px;
+  color: $second_color;
+  padding: 16px 12px;
+
+  &:hover {
+    border: solid 1px $primary;
+  }
+
+  &:focus {
+    border: solid 1px $hover;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $disabledColor;
+    color: $second_color;
+
+    &:hover {
+      border: solid 1px $second_color;
+    }
+  }
+}
+
+.inputSmall {
+  border: solid 1px $backGroundInput;
+  border-radius: 30px;
+  color: $second_color;
+  background-color:$backGroundInput ;
+  padding: 0px 12px;
+
+  &:hover {
+    border: solid 1px $primary;
+  }
+
+  &:focus {
+    border: solid 1px $hover;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $disabledColor;
+    color: $second_color;
+
+    &:hover {
+      border: solid 1px $second_color;
+    }
+  }
+}
+
+.invalid {
+  border: solid 1px $error;
+
+  &:hover {
+    border: solid 1px $error;
+  }
+}

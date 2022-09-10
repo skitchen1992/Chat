@@ -1,0 +1,69 @@
+@import "src/styleVariables/styleVariables";
+
+.user {
+  display: flex;
+  height: 86px;
+  width: 100%;
+  gap: 8px;
+  border-bottom: 1px solid $backGroundInput;
+  padding: 12px;
+  background-repeat: no-repeat;
+  background-position: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.logo {
+  width: 48px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &__name {
+      font-weight: $font-weight-bold;
+    }
+
+    &__date {
+      font-size: $body2;
+      color: $second_color;
+    }
+
+    &__message {
+      display: flex;
+      font-size: $body1;
+      color: $second_color;
+      height: 34px;
+      overflow: hidden;
+      width: 80%;
+    }
+
+    &__numberOfMessages {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      border-radius: 50px;
+      background-color: $primary;
+      height: 24px;
+      width: 34px;
+
+      &__value {
+        font-size: $body1;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: $fig;
+  border: 1px solid $primary;
+  border-radius: 4px;
+}
