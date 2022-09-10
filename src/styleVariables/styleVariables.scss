@@ -1,9 +1,26 @@
-$button_primary: #2083F3;
-$button_hover: #1968C2;
-$button_secondary: #ec4747;
-$button_secondary_hover: #FF0000;
+$primary: #2083F3;
+$hover: #1968C2;
+$warm: #ec4747;
+$warm_hover: #FF0000;
+$error: #DF3F49;
+$backGroundInput: #F1EDEDFF;
+$fig: rgb(232, 242, 253);
+
+$disabledColor: #bcbccb;
 
 $font-weight-bold: 600;
 $font-size-h1: 40px;
 
-$second_color: #D9D9D9;
+$second_color: #706b6b;
+
+$borderRadius: 4px;
+
+//Typography
+$h4: 1.375em;
+$h5: 1.25em;
+$h6: 1.125em;
+$subtitle1: 1em;
+$subtitle2: 0.875em;
+$body1: 0.75em;
+$body2: 0.625em;
+$caption: 0.5em
