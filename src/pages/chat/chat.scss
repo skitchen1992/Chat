@@ -1,0 +1,80 @@
+@import "src/styleVariables/styleVariables";
+
+.chat {
+  display: flex;
+  position: relative;
+
+  &__sideBar {
+    height: 100vh;
+    width: 400px;
+    background-color: #FBFBFB;
+    border-right: 1px solid #EAEAEA;
+    overflow: scroll;
+
+    &__wrap {
+      position: sticky;
+      top: 0;
+      background-color: white;
+    }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: right;
+    padding: 8px;
+  }
+
+  &__search {
+    margin: 24px 8px;
+  }
+
+  &__userList {
+    margin-top: 24px;
+    border-top: 1px solid $backGroundInput;
+  }
+
+  &__main {
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      height: 60px;
+      padding: 8px 0;
+      border-bottom: 1px solid $backGroundInput;
+
+      &__label {
+        display: flex;
+        align-items: center;
+        gap: 8px
+      }
+
+      &__logo {
+        width: 34px;
+        font-weight: $font-weight-bold;
+      }
+
+      &__name {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    &__messageList {
+      height: 100%;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid $backGroundInput;
+    }
+  }
+}

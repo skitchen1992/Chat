@@ -1,10 +1,10 @@
 @import "src/styleVariables/styleVariables";
 
-.page500 {
+.login {
   display: flex;
   width: 100%;
 
-  &__main {
+  &__wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,19 +14,22 @@
     transform: translate(-50%, -50%)
   }
 
-  &__error {
-    font-weight: bold;
-    font-size: 40px;
+  &__title {
+    color: $second_color;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-h1;
+    margin: 0;
   }
 
-  &__error-message {
-    margin-top: 8px;
-    font-size: 20px;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
   }
 
-  &__buttonWrap {
+  &__link-wrap{
     margin-top: 32px;
   }
 }
-
 

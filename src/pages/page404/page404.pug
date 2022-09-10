@@ -1,14 +1,6 @@
-- const back_to_chat = "Назад к чатам"
-- const error_message = "Не туда попали"
-- const error_code = "404"
-
-
 section.page404
     .page404__wrap
-        .page404__error= error_code
-        .page404__error-message= error_message
-        a.page404__backToChat(href='#')= back_to_chat
-style
-    include ../../../reset.scss
-
-script(type='module' src='page404.js')
+        .page404__error= errorCode
+        .page404__error-message= errorMassage
+        .page404__buttonWrap
+        | !{buttonBackToChat}
