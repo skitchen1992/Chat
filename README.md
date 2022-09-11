@@ -16,7 +16,7 @@ $ npm start
 
 ### Netlify
 
-https://sprint-1--lustrous-rugelach-573a0b.netlify.app/
+https://deploy-preview-15--sendmeyou.netlify.app/
 
 ### Layout
 

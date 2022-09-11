@@ -1,0 +1,11 @@
+section.login
+    .login__wrap
+        h1.login__title= title
+        form#login__form.login__form
+            | !{inputLogin}
+            | !{errorMessageLogin}
+            | !{inputPassword}
+            | !{errorMessagePassword}
+            | !{button}
+        .login__link-wrap
+            | !{a}

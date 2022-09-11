@@ -63,6 +63,12 @@
       "warn",
       "single"
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "no-eval": "error",
     "global-require": "off",
     "no-else-return": "off",

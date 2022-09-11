@@ -1,0 +1,8 @@
+@import "src/styleVariables/styleVariables";
+
+.error {
+  display: none;
+  color: $error;
+  font-size: small;
+  width: 164px;
+}

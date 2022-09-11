@@ -1,0 +1,19 @@
+@import "src/styleVariables/styleVariables";
+
+.search {
+  border: solid 1px $backGroundInput;
+  border-radius: 4px;
+  color: $second_color;
+  background-color: $backGroundInput;
+  padding: 8px 10px 8px 30px;
+  background-image: url("../../../public/icons/search.png");
+  background-repeat: no-repeat;
+  background-position: 4px;
+  outline: none;
+
+  &:focus {
+    border: solid 1px $backGroundInput;
+    outline: none;
+  }
+
+}

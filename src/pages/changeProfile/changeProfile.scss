@@ -3,7 +3,7 @@
 .changeProfile {
   display: flex;
 
-  &__action-bar {
+  &__actionBar {
     display: flex;
     height: 100vh;
     width: 64px;
@@ -17,7 +17,6 @@
     display: flex;
     height: 100vh;
     width: 100%;
-
   }
 
   &__action_button {
@@ -25,19 +24,20 @@
     border: none;
     height: 28px;
     width: 28px;
-    background-color: $button_primary;
+    background-color: $primary;
     cursor: pointer;
     color: white;
 
     &:hover {
-      background-color: $button_hover;
+      background-color: $hover;
     }
   }
 
-  &__wrap {
+  &__form {
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: scroll;
   }
 
   &__content {
@@ -80,20 +80,6 @@
     &__wrap {
       display: flex;
       justify-content: center;
-    }
-
-    &__button {
-      border: none;
-      border-radius: 4px;
-      font: inherit;
-      background-color: $button_primary;
-      padding: 8px 16px;
-      color: white;
-      width: 164px;
-
-      &:hover {
-        background-color: $button_hover;
-      }
     }
 
   }

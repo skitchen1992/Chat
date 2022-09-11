@@ -24,14 +24,8 @@
     font-size: 20px;
   }
 
-  &__backToChat {
-    text-decoration: none;
+  &__buttonWrap {
     margin-top: 32px;
-    color: $button_primary;
-
-    &:hover {
-      color: $button_hover;
-    }
   }
 }
 

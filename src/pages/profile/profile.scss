@@ -25,12 +25,12 @@
     border: none;
     height: 28px;
     width: 28px;
-    background-color: $button_primary;
+    background-color: $primary;
     cursor: pointer;
     color: white;
 
     &:hover {
-      background-color: $button_hover;
+      background-color: $hover;
     }
   }
 
@@ -38,6 +38,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: scroll;
   }
 
   &__content {
@@ -87,28 +88,8 @@
       padding: 8px 0;
       border-bottom: 1px solid $second_color;
 
-      &:last-child{
+      &:last-child {
         border: none;
-      }
-    }
-
-    &__button {
-      text-decoration: none;
-      color: $button_primary;
-      cursor: pointer;
-
-      &:hover {
-        color: $button_hover;
-      }
-    }
-
-    &__button__secondary {
-      text-decoration: none;
-      color: $button_secondary;
-      cursor: pointer;
-
-      &:hover {
-        color: $button_secondary_hover;
       }
     }
   }
