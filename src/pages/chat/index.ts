@@ -3,17 +3,17 @@ import { ButtonLink } from "../../components/buttonLink";
 import { Input } from "../../components/input";
 import { Search } from "../../components/search";
 import { User } from "../../components/user";
-import user from "../../icons/user.png";
+import user from "../../../public/icons/user.png";
 import Block from "../../utils/Block";
 import template from "../chat/chat.pug";
 import * as styles from "./chat.scss";
-import account from "../../icons/account.png";
-import plusIcon from "../../icons/plus-circle.png";
-import minusIcon from "../../icons/minus-circle.png";
-import dotsIcon from "../../icons/dots-three-circle-vertical.png";
-import paperclip from "../../icons/paperclip.png";
-import image from "../../icons/image.png";
-import filePlus from "../../icons/file-plus.png";
+import account from "../../../public/icons/account.png";
+import plusIcon from "../../../public/icons/plus-circle.png";
+import minusIcon from "../../../public/icons/minus-circle.png";
+import dotsIcon from "../../../public/icons/dots-three-circle-vertical.png";
+import paperclip from "../../../public/icons/paperclip.png";
+import image from "../../../public/icons/image.png";
+import filePlus from "../../../public/icons/file-plus.png";
 import { Dropdown } from "../../components/dropdown";
 
 interface IChatProps {

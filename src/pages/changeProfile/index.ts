@@ -3,9 +3,9 @@ import { validationPatterns } from "../../utils/validationPatterns";
 import template from "../changeProfile/changeProfile.pug";
 import * as styles from "./changeProfile.scss";
 import { Button } from "../../components/button";
-import account from "../../icons/account.png";
+import account from "../../../public/icons/account.png";
 import { Input } from "../../components/input";
-import arrow from "../../icons/arrow.png";
+import arrow from "../../../public/icons/arrow.png";
 
 interface IChangeProfileProps {
   email: string,
@@ -148,39 +148,15 @@ export class ChangeProfilePage extends Block <IChangeProfileProps> {
       console.log("formData", form);
     }
 
-    if (!isEmailValid) {
-      (this.children.inputPost as Block).setProps({ error: true });
-    }
-    if (isEmailValid) {
-      (this.children.inputPost as Block).setProps({ error: false });
-    }
+    (this.children.inputPost as Block).setProps({ error: !isEmailValid });
 
-    if (!isLoginValid) {
-      (this.children.inputLogin as Block).setProps({ error: true });
-    }
-    if (isLoginValid) {
-      (this.children.inputLogin as Block).setProps({ error: false });
-    }
+    (this.children.inputLogin as Block).setProps({ error: !isLoginValid });
 
-    if (!isFirstNameValid) {
-      (this.children.inputFirstName as Block).setProps({ error: true });
-    }
-    if (isFirstNameValid) {
-      (this.children.inputFirstName as Block).setProps({ error: false });
-    }
+    (this.children.inputFirstName as Block).setProps({ error: !isFirstNameValid });
 
-    if (!isSecondNameValid) {
-      (this.children.inputSecondName as Block).setProps({ error: true });
-    }
-    if (isFirstNameValid) {
-      (this.children.inputSecondName as Block).setProps({ error: false });
-    }
-    if (!isPhoneValid) {
-      (this.children.inputPhone as Block).setProps({ error: true });
-    }
-    if (isPhoneValid) {
-      (this.children.inputPhone as Block).setProps({ error: false });
-    }
+    (this.children.inputSecondName as Block).setProps({ error: !isSecondNameValid });
+
+    (this.children.inputPhone as Block).setProps({ error: !isPhoneValid });
 
   }
 

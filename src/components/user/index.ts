@@ -1,4 +1,4 @@
-import user from "../../icons/user.png";
+import user from "../../../public/icons/user.png";
 import Block from "../../utils/Block";
 import template from "./user.pug";
 import * as styles from "./user.scss";

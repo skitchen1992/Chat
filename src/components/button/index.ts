@@ -2,6 +2,8 @@ import Block from "../../utils/Block";
 import template from "./button.pug";
 import * as styles from "./button.scss";
 
+type IVariant = "round" | "contained" | "icon"
+
 interface IButtonProps {
   label?: string
   events?: {
@@ -10,7 +12,7 @@ interface IButtonProps {
   }
   disabled?: boolean
   type?: "submit" | "reset",
-  variant: "round" | "contained" | "icon"
+  variant: IVariant
   icon?: string
 }
 
@@ -22,7 +24,7 @@ export class Button extends Block <IButtonProps> {
     this.setButtonVariant(variant, icon);
   }
 
-  setButtonVariant(variant: "round" | "contained" | "icon", icon?: string) {
+  setButtonVariant(variant: IVariant, icon?: string) {
     if (variant === "round") {
       this.element!.classList.add("buttonRound");
       icon && this.element!.appendChild(this.getImg(icon));

@@ -2,8 +2,8 @@ import Block from "../../utils/Block";
 import template from "../profile/profile.pug";
 import * as styles from "./profile.scss";
 import { ButtonLink } from "../../components/buttonLink";
-import arrow from "../../icons/arrow.png";
-import account from "../../icons/account.png";
+import arrow from "../../../public/icons/arrow.png";
+import account from "../../../public/icons/account.png";
 import { Button } from "../../components/button";
 
 interface IProfileList {

@@ -19,16 +19,11 @@ type Options = {
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
 
-function queryStringify(data: Record<string, string>) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object');
-  }
-
-  // Здесь достаточно и [object Object] для объекта
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-  }, '?');
+const queryStringify = (data: Record<string, string>) => {
+  return '? ' + Object
+    .entries(data)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&')
 }
 
 export class HTTPTransport {

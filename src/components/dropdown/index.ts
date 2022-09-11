@@ -46,8 +46,8 @@ export class Dropdown extends Block <IDropDownProps> {
 
   render() {
     const { firstLabel, secondLabel, variant } = this.props;
-    const classTeg = variant === "bottom" ? "dropdown__content__bottom" : "dropdown__content__top";
+    const classTag = variant === "bottom" ? "dropdown__content__bottom" : "dropdown__content__top";
 
-    return this.compile(template, { firstLabel, secondLabel, styles, classTeg });
+    return this.compile(template, { firstLabel, secondLabel, styles, classTag });
   }
 }

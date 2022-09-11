@@ -4,8 +4,8 @@ import { Input } from "../../components/input";
 import Block from "../../utils/Block";
 import { validationPatterns } from "../../utils/validationPatterns";
 import template from "../changePassword/changePassword.pug";
-import account from "../../icons/account.png";
-import arrow from "../../icons/arrow.png";
+import account from "../../../public/icons/account.png";
+import arrow from "../../../public/icons/arrow.png";
 import * as styles from "./changePassword.scss";
 
 interface IChangePasswordProps {
@@ -118,26 +118,11 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       console.log("formData", form);
     }
 
-    if (!isPasswordValid) {
-      (this.children.inputPassword as Block).setProps({ error: true });
-    }
-    if (isPasswordValid) {
-      (this.children.inputPassword as Block).setProps({ error: false });
-    }
+    (this.children.inputPassword as Block).setProps({ error: !isPasswordValid });
 
-    if (!isNewPasswordValid) {
-      (this.children.inputNewPassword as Block).setProps({ error: true });
-    }
-    if (isNewPasswordValid) {
-      (this.children.inputNewPassword as Block).setProps({ error: false });
-    }
+    (this.children.inputNewPassword as Block).setProps({ error: !isNewPasswordValid });
 
-    if (!isPasswordElseValid) {
-      (this.children.inputNewPasswordElse as Block).setProps({ error: true });
-    }
-    if (isPasswordElseValid) {
-      (this.children.inputNewPasswordElse as Block).setProps({ error: false });
-    }
+    (this.children.inputNewPasswordElse as Block).setProps({ error: !isPasswordElseValid });
 
     if (form.newPassword !== form.newPasswordElse) {
       (this.children.inputNewPassword as Block).setProps({ error: true });
