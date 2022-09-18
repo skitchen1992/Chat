@@ -1,5 +1,5 @@
 import { Button } from "../../components/button";
-import { ButtonLink } from "../../components/buttonLink";
+import { Link } from "../../components/buttonLink";
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
 import { validationPatterns } from "../../utils/validationPatterns";
@@ -26,11 +26,9 @@ export class LoginPage extends Block <ILoginProps> {
       }
     });
 
-    this.children.a = new ButtonLink({
+    this.children.a = new Link({
       label: "Еще не зарегестрированы?",
-      events: {
-        click: () => console.log("ButtonLink")
-      }
+      to: '/register',
     });
 
     this.children.inputLogin = new Input({

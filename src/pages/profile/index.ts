@@ -6,14 +6,24 @@ import arrow from "../../../public/icons/arrow.png";
 import account from "../../../public/icons/account.png";
 import { Button } from "../../components/button";
 
+const profileList = [
+  { label: "Почта", value: "pochta@yandex.ru" },
+  { label: "Логин", value: "nik" },
+  { label: "Имя", value: "Никита" },
+  { label: "Фамилия", value: "Лав" },
+  { label: "Телефон", value: "+79999999999" }
+];
+
+const profileName = "Никита"
+
 interface IProfileList {
   label: string,
   value: string
 }
 
 interface IProfileProps {
-  profileName: string;
-  profileList: IProfileList[];
+  profileName?: string;
+  profileList?: IProfileList[];
 }
 
 export class ProfilePage extends Block <IProfileProps> {
@@ -54,10 +64,10 @@ export class ProfilePage extends Block <IProfileProps> {
 
   render() {
     return this.compile(template, {
-      profileName: this.props.profileName,
+      profileName,
       account: account,
       styles,
-      profileList: this.props.profileList
+      profileList
     });
   }
 }

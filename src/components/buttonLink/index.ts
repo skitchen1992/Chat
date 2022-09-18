@@ -1,8 +1,10 @@
 import Block from "../../utils/Block";
 import template from "./buttonLink.pug";
+import { PropsWithRouter, withRouter } from "../../hocs/withRouter";
 import * as styles from "./buttonLink.scss";
 
-interface IButtonProps {
+interface IButtonProps extends PropsWithRouter {
+  to: string;
   label: string;
   events: {
     click: () => void
@@ -11,9 +13,9 @@ interface IButtonProps {
   href?: string;
 }
 
-export class ButtonLink extends Block <IButtonProps> {
+export class ButtonLink extends Block<IButtonProps> {
   constructor(props: IButtonProps) {
-    super("a", props);
+    super("a", { ...props, events: { click: () => this.navigate() } });
     const { variant = "primary" } = this.props;
 
     this.setButtonVariant(variant);
@@ -37,6 +39,10 @@ export class ButtonLink extends Block <IButtonProps> {
     }
   }
 
+  navigate() {
+    this.props.router.go(this.props.to);
+  }
+
   render() {
     const { href } = this.props;
 
@@ -45,3 +51,5 @@ export class ButtonLink extends Block <IButtonProps> {
     return this.compile(template, { label: this.props.label, styles });
   }
 }
+
+export const Link = withRouter(ButtonLink);
