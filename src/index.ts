@@ -2,7 +2,7 @@ import { LoginPage } from "./pages/login";
 import Router from "./utils/Router";
 import AuthController from "./controllers/AuthController";
 import { RegistrationPage } from "./pages/registration";
-import { ProfilePage } from "./pages/profile";
+import { ProfilePage} from "./pages/profile";
 import { SettingsPage} from "./pages/settings";
 import { ChangePasswordPage} from "./pages/changePassword";
 import { ChatPage} from "./pages/chat";

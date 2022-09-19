@@ -1,13 +1,18 @@
 import { isEqual, set } from "./helpers";
 import { EventBus } from "./EventBus";
 import { ComponentConstructable } from "../types/types";
+import { User } from "../api/AuthAPI";
+
+interface IStore {
+  user?:  User
+}
 
 export enum StoreEvents {
   Updated = "updated"
 }
 
 export class Store extends EventBus {
-  private state: any = {};
+  private state: IStore = {};
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);

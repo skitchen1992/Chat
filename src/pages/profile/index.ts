@@ -8,34 +8,18 @@ import { Button } from "../../components/button";
 import { Routes } from "../../index";
 import Router from "../../utils/Router";
 import AuthController from "../../controllers/AuthController";
+import { withStore } from "../../utils/Store";
+import { User } from "../../api/AuthAPI";
+import { getUserInfoList } from "./getProfileList";
 
-const profileList = [
-  { label: "Почта", value: "pochta@yandex.ru" },
-  { label: "Логин", value: "nik" },
-  { label: "Имя", value: "Никита" },
-  { label: "Фамилия", value: "Лав" },
-  { label: "Телефон", value: "+79999999999" }
-];
-
-const profileName = "Никита";
-
-interface IProfileList {
-  label: string,
-  value: string
-}
-
-interface IProfileProps {
-  profileName?: string;
-  profileList?: IProfileList[];
-}
-
-export class ProfilePage extends Block <IProfileProps> {
-  constructor(props: IProfileProps) {
+export class ProfilePageBase extends Block <User> {
+  constructor(props: User) {
     super("div", props);
-
   }
 
   init() {
+    AuthController.fetchUser();
+
     this.children.buttonBack = new Button({
       icon: arrow,
       variant: "round",
@@ -57,6 +41,7 @@ export class ProfilePage extends Block <IProfileProps> {
         click: () => Router.go(Routes.Password)
       }
     });
+
     this.children.buttonExit = new ButtonLink({
       label: "Выйти",
       variant: "alert",
@@ -66,12 +51,20 @@ export class ProfilePage extends Block <IProfileProps> {
     });
   }
 
+  getUserInfoList() {
+    return getUserInfoList(this.props);
+  }
+
   render() {
     return this.compile(template, {
-      profileName,
+      profileName: this.props.first_name,
       account: account,
       styles,
-      profileList
+      profileList: this.getUserInfoList()
     });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const ProfilePage = withUser(ProfilePageBase);
