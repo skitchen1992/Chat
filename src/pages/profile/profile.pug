@@ -7,7 +7,7 @@
                 img(src=account, alt="account")
             .profile__name= profileName
             .profile__info
-              each item in profileList
+              each item in userInfoList
                   .profile__info__item
                       .profile__info__item__label=item.label
                       .profile__info__item__value=item.value

@@ -60,7 +60,7 @@ export class ProfilePageBase extends Block <User> {
       profileName: this.props.first_name,
       account: account,
       styles,
-      profileList: this.getUserInfoList()
+      userInfoList: this.getUserInfoList()
     });
   }
 }
