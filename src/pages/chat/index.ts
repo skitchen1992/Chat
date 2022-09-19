@@ -15,6 +15,8 @@ import paperclip from "../../../public/icons/paperclip.png";
 import image from "../../../public/icons/image.png";
 import filePlus from "../../../public/icons/file-plus.png";
 import { Dropdown } from "../../components/dropdown";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
 
 interface IChatProps {
   logo?: string;
@@ -31,7 +33,7 @@ export class ChatPage extends Block <IChatProps> {
     this.children.buttonProfile = new ButtonLink({
       label: "Профиль",
       events: {
-        click: () => console.log("Профиль")
+        click: () => Router.go(Routes.Profile)
       }
     });
 

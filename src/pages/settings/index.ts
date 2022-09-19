@@ -1,11 +1,13 @@
 import Block from "../../utils/Block";
 import { validationPatterns } from "../../utils/validationPatterns";
-import template from "../changeProfile/changeProfile.pug";
-import * as styles from "./changeProfile.scss";
+import template from "./settings.pug";
+import * as styles from "./settings.scss";
 import { Button } from "../../components/button";
 import account from "../../../public/icons/account.png";
 import { Input } from "../../components/input";
 import arrow from "../../../public/icons/arrow.png";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
 
 interface IChangeProfileProps {
   email: string,
@@ -15,7 +17,7 @@ interface IChangeProfileProps {
   phone: string
 }
 
-export class ChangeProfilePage extends Block <IChangeProfileProps> {
+export class SettingsPage extends Block <IChangeProfileProps> {
   constructor(props: IChangeProfileProps) {
     super("div", props);
 
@@ -23,12 +25,13 @@ export class ChangeProfilePage extends Block <IChangeProfileProps> {
 
   init() {
     this.children.buttonBack = new Button({
-      variant: "round",
       icon: arrow,
+      variant: "round",
       events: {
-        click: () => console.log("buttonBack")
+        click: () => Router.go(Routes.Messenger)
       }
     });
+
     this.children.buttonSave = new Button({
       variant: "contained",
       label: "Сохранить",

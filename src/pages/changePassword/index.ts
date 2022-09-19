@@ -7,6 +7,8 @@ import template from "../changePassword/changePassword.pug";
 import account from "../../../public/icons/account.png";
 import arrow from "../../../public/icons/arrow.png";
 import * as styles from "./changePassword.scss";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
 
 interface IChangePasswordProps {
 
@@ -24,12 +26,13 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
     });
 
     this.children.buttonBack = new Button({
-      variant: "round",
       icon: arrow,
+      variant: "round",
       events: {
-        click: () => console.log("buttonBack")
+        click: () => Router.go(Routes.Messenger)
       }
     });
+
     this.children.buttonSave = new Button({
       variant: "contained",
       label: "Сохранить",

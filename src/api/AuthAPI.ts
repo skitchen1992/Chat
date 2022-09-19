@@ -12,6 +12,7 @@ export interface SignupData {
   email: string;
   password: string;
   phone: string;
+  passwordElse: string
 }
 
 export interface User {

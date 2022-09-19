@@ -4,11 +4,15 @@ import { validationPatterns } from "../../utils/validationPatterns";
 import template from "../registration/registration.pug";
 import * as styles from "./registration.scss";
 import { Button } from "../../components/button";
-import { Link } from "../../components/buttonLink";
+import { ButtonLink } from "../../components/buttonLink";
 import { Input } from "../../components/input";
-import AuthController from '../../controllers/AuthController';
+import AuthController from "../../controllers/AuthController";
+import Router from "../../utils/Router";
+import { Routes } from "../../index";
+import { SignupData } from "../../api/AuthAPI";
 
-interface IRegistrationProps {}
+interface IRegistrationProps {
+}
 
 export class RegistrationPage extends Block <IRegistrationProps> {
   constructor(props: IRegistrationProps) {
@@ -25,9 +29,11 @@ export class RegistrationPage extends Block <IRegistrationProps> {
       }
     });
 
-    this.children.buttonEnter = new Link({
+    this.children.buttonEnter = new ButtonLink({
       label: "Войти",
-      to: '/'
+      events: {
+        click: () => Router.go(Routes.Index)
+      }
     });
 
     this.children.inputPost = new Input({
@@ -139,10 +145,9 @@ export class RegistrationPage extends Block <IRegistrationProps> {
     const isPhoneValid = this.isValid(form.phone as string, "phone");
     const isPasswordValid = this.isValid(form.password as string, "password");
     const isPasswordElse = this.isValid(form.passwordElse as string, "passwordElse");
-    console.log("formData", form);
+
     if (isLoginValid && isPasswordValid && isEmailValid && isFirstNameValid && isSecondNameValid && isPhoneValid && isPasswordElse && form.password === form.passwordElse) {
-      console.log("formData", form);
-      AuthController.signup(form);
+      AuthController.signup(form as SignupData);
     }
 
     if (!isEmailValid) {

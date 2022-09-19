@@ -1,10 +1,12 @@
 import Block from "../../utils/Block";
-import template from "./button.pug";
-import * as styles from "./button.scss";
+import template from "./buttonRouter.pug";
+import * as styles from "./buttonRouter.scss";
+import { PropsWithRouter, withRouter } from "../../hocs/withRouter";
 
 type IVariant = "round" | "contained" | "icon"
 
-interface IButtonProps  {
+interface IButtonProps extends PropsWithRouter  {
+  to: string;
   label?: string
   events?: {
     click?: (e: Event) => void,
@@ -18,7 +20,7 @@ interface IButtonProps  {
 
 export class Button extends Block <IButtonProps> {
   constructor(props: IButtonProps) {
-    super("button", props);
+    super("button", { ...props, events: { click: () => this.navigate() } });
     const { variant, icon } = this.props;
 
     this.setButtonVariant(variant, icon);
@@ -46,6 +48,10 @@ export class Button extends Block <IButtonProps> {
     return img;
   }
 
+  navigate() {
+    this.props.router.go(this.props.to);
+  }
+
   render() {
     const { type = "button", disabled = false } = this.props;
 
@@ -62,3 +68,5 @@ export class Button extends Block <IButtonProps> {
     return this.compile(template, { label: this.props.label, styles });
   }
 }
+
+export const ButtonRouter = withRouter(Button);

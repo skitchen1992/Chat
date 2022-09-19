@@ -5,6 +5,9 @@ import { ButtonLink } from "../../components/buttonLink";
 import arrow from "../../../public/icons/arrow.png";
 import account from "../../../public/icons/account.png";
 import { Button } from "../../components/button";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
+import AuthController from "../../controllers/AuthController";
 
 const profileList = [
   { label: "Почта", value: "pochta@yandex.ru" },
@@ -14,7 +17,7 @@ const profileList = [
   { label: "Телефон", value: "+79999999999" }
 ];
 
-const profileName = "Никита"
+const profileName = "Никита";
 
 interface IProfileList {
   label: string,
@@ -37,29 +40,30 @@ export class ProfilePage extends Block <IProfileProps> {
       icon: arrow,
       variant: "round",
       events: {
-        click: () => console.log("buttonBack")
+        click: () => Router.go(Routes.Messenger)
       }
     });
-    this.children.buttonDate = new ButtonLink({
+
+    this.children.buttonSettings = new ButtonLink({
       label: "Изменить данные",
       events: {
-        click: () => console.log("Изменить данные")
+        click: () => Router.go(Routes.Settings)
       }
     });
+
     this.children.buttonPass = new ButtonLink({
       label: "Изменить пароль",
       events: {
-        click: () => console.log("Изменить пароль")
+        click: () => Router.go(Routes.Password)
       }
     });
     this.children.buttonExit = new ButtonLink({
       label: "Выйти",
       variant: "alert",
       events: {
-        click: () => console.log("Выйти")
+        click: () => AuthController.logout()
       }
     });
-
   }
 
   render() {
