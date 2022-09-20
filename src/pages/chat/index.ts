@@ -1,10 +1,13 @@
+import { Chat } from "../../api/ChatAPI";
 import { Button } from "../../components/button";
 import { ButtonLink } from "../../components/buttonLink";
 import { Input } from "../../components/input";
 import { Search } from "../../components/search";
 import { User } from "../../components/user";
 import user from "../../../public/icons/user.png";
+import  ChatController from "../../controllers/ChatController";
 import Block from "../../utils/Block";
+import store, { withStore } from "../../utils/Store";
 import template from "../chat/chat.pug";
 import * as styles from "./chat.scss";
 import account from "../../../public/icons/account.png";
@@ -18,18 +21,15 @@ import { Dropdown } from "../../components/dropdown";
 import { Routes } from "../../index";
 import Router from "../../utils/Router";
 
-interface IChatProps {
-  logo?: string;
-  first_name?: string;
-}
-
-export class ChatPage extends Block <IChatProps> {
-  constructor(props: IChatProps) {
+class ChatPageBase extends Block <Chat> {
+  constructor(props: Chat) {
     super("div", props);
-
+    console.log(store.getState())
   }
 
   init() {
+    ChatController.getChatList()
+
     this.children.buttonProfile = new ButtonLink({
       label: "Профиль",
       events: {
@@ -127,7 +127,11 @@ export class ChatPage extends Block <IChatProps> {
   }
 
   render() {
-    const { logo, first_name = "Никита" } = this.props;
-    return this.compile(template, { account: account, styles, logo: logo || user, first_name });
+    const { avatar, first_name = "Никита" } = this.props;
+    return this.compile(template, { account: account, styles, logo: avatar || user, first_name });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.chatList }));
+
+export const ChatPage = withUser(ChatPageBase);

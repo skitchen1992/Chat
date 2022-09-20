@@ -5,7 +5,7 @@ import { RegistrationPage } from "./pages/registration";
 import { ProfilePage} from "./pages/profile";
 import { SettingsPage } from "./pages/settings";
 import { ChangePasswordPage} from "./pages/changePassword";
-import { ChatPage} from "./pages/chat";
+import { ChatPage } from "./pages/chat";
 
 export enum Routes {
   Index = "/",

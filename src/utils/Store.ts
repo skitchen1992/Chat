@@ -1,10 +1,16 @@
+import { Chat } from "../api/ChatAPI";
 import { isEqual, set } from "./helpers";
 import { EventBus } from "./EventBus";
 import { ComponentConstructable } from "../types/types";
 import { User } from "../api/AuthAPI";
 
 interface IStore {
-  user?:  User
+  user?: User | null
+  chatList: {
+    items: Chat[],
+    hasData: boolean,
+    loading: boolean
+  }
 }
 
 export enum StoreEvents {
@@ -12,7 +18,14 @@ export enum StoreEvents {
 }
 
 export class Store extends EventBus {
-  private state: IStore = {};
+  private state: IStore = {
+    user: null,
+    chatList: {
+      items: [],
+      hasData: false,
+      loading: false
+    }
+  };
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
