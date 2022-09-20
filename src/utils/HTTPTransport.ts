@@ -6,9 +6,15 @@ export enum Method {
   Delete = 'Delete'
 }
 
+export type Headers = Record<string, string> & {
+  "set-cookie"?: string[]
+};
+
 type Options = {
   method: Method;
   data?: any;
+  timeout?: number
+  headers?: Headers
 };
 
 export default class HTTPTransport {

@@ -1,4 +1,8 @@
+import { User } from "../../api/AuthAPI";
+import AuthController from "../../controllers/AuthController";
+import  SettingController  from "../../controllers/SettingController";
 import Block from "../../utils/Block";
+import { withStore } from "../../utils/Store";
 import { validationPatterns } from "../../utils/validationPatterns";
 import template from "./settings.pug";
 import * as styles from "./settings.scss";
@@ -9,21 +13,15 @@ import arrow from "../../../public/icons/arrow.png";
 import { Routes } from "../../index";
 import Router from "../../utils/Router";
 
-interface IChangeProfileProps {
-  email: string,
-  login: string,
-  firstName: string,
-  secondName: string,
-  phone: string
-}
-
-export class SettingsPage extends Block <IChangeProfileProps> {
-  constructor(props: IChangeProfileProps) {
+class SettingsPageBase extends Block <User> {
+  constructor(props: User) {
     super("div", props);
 
   }
 
   init() {
+    AuthController.fetchUser();
+
     this.children.buttonBack = new Button({
       icon: arrow,
       variant: "round",
@@ -42,9 +40,9 @@ export class SettingsPage extends Block <IChangeProfileProps> {
 
     this.children.inputPost = new Input({
       type: "text",
+      value: this.props.email,
       name: "email",
       size: "small",
-      value: this.props.email,
       events: {
         blur: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps),
         focus: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps)
@@ -66,7 +64,7 @@ export class SettingsPage extends Block <IChangeProfileProps> {
       type: "text",
       name: "first_name",
       size: "small",
-      value: this.props.firstName,
+      value: this.props.first_name,
       events: {
         blur: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps),
         focus: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps)
@@ -77,7 +75,7 @@ export class SettingsPage extends Block <IChangeProfileProps> {
       type: "text",
       name: "second_name",
       size: "small",
-      value: this.props.secondName,
+      value: this.props.second_name,
       events: {
         blur: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps),
         focus: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps)
@@ -141,13 +139,14 @@ export class SettingsPage extends Block <IChangeProfileProps> {
   onSubmit() {
     const form = this.getForm();
 
-    const isEmailValid = this.isValid(form.email as string, "email");
-    const isLoginValid = this.isValid(form.login as string, "login");
-    const isFirstNameValid = this.isValid(form.firstName as string, "first_name");
-    const isSecondNameValid = this.isValid(form.secondName as string, "second_name");
-    const isPhoneValid = this.isValid(form.phone as string, "phone");
+    const isEmailValid = this.isValid(form.email, "email");
+    const isLoginValid = this.isValid(form.login, "login");
+    const isFirstNameValid = this.isValid(form.first_name, "first_name");
+    const isSecondNameValid = this.isValid(form.second_name, "second_name");
+    const isPhoneValid = this.isValid(form.phone, "phone");
 
     if (isLoginValid && isEmailValid && isFirstNameValid && isSecondNameValid && isPhoneValid) {
+      SettingController.changeProfile(form)
       console.log("formData", form);
     }
 
@@ -168,16 +167,22 @@ export class SettingsPage extends Block <IChangeProfileProps> {
 
     const formData = new FormData(form);
 
-    const email = formData.get("email");
-    const login = formData.get("login");
-    const firstName = formData.get("first_name");
-    const secondName = formData.get("second_name");
-    const phone = formData.get("phone");
+    const email = formData.get("email") as string;
+    const login = formData.get("login") as string;
+    const first_name = formData.get("first_name") as string;
+    const second_name = formData.get("second_name") as string;
+    const phone = formData.get("phone") as string;
+    const display_name = "";
 
-    return { email, login, firstName, secondName, phone };
+
+    return { email, login, first_name, second_name, phone, display_name };
   }
 
   render() {
     return this.compile(template, { account: account, styles });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const SettingsPage = withUser(SettingsPageBase);

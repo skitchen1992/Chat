@@ -1,6 +1,7 @@
 import { Button } from "../../components/button";
 import { ErrorMessage } from "../../components/errorMessage";
 import { Input } from "../../components/input";
+import SettingController from "../../controllers/SettingController";
 import Block from "../../utils/Block";
 import { validationPatterns } from "../../utils/validationPatterns";
 import template from "../changePassword/changePassword.pug";
@@ -113,12 +114,12 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
   onSubmit() {
     const form = this.getForm();
 
-    const isPasswordValid = this.isValid(form.password as string, "password");
-    const isNewPasswordValid = this.isValid(form.newPassword as string, "newPassword");
-    const isPasswordElseValid = this.isValid(form.newPassword as string, "newPasswordElse");
+    const isPasswordValid = this.isValid(form.password, "password");
+    const isNewPasswordValid = this.isValid(form.newPassword, "newPassword");
+    const isPasswordElseValid = this.isValid(form.newPassword, "newPasswordElse");
 
     if (isPasswordValid && form.newPassword === form.newPasswordElse) {
-      console.log("formData", form);
+      SettingController.changePassword({ oldPassword: form.password, newPassword: form.newPassword })
     }
 
     (this.children.inputPassword as Block).setProps({ error: !isPasswordValid });
@@ -146,9 +147,9 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
 
     const formData = new FormData(form);
 
-    const password = formData.get("password");
-    const newPassword = formData.get("newPassword");
-    const newPasswordElse = formData.get("newPasswordElse");
+    const password = formData.get("password") as string;
+    const newPassword = formData.get("newPassword") as string;
+    const newPasswordElse = formData.get("newPasswordElse") as string;
 
     return { password, newPassword, newPasswordElse };
   }

@@ -12,7 +12,7 @@ import { withStore } from "../../utils/Store";
 import { User } from "../../api/AuthAPI";
 import { getUserInfoList } from "./getProfileList";
 
-export class ProfilePageBase extends Block <User> {
+class ProfilePageBase extends Block <User> {
   constructor(props: User) {
     super("div", props);
   }
