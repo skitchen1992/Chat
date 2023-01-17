@@ -49,6 +49,14 @@ export class Input extends Block <IInputProps> {
     }
   }
 
+  public setValue(value: string) {
+    return (this.element as HTMLInputElement).value = value;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
+  }
+
   setInputSize(size: "small" | "medium", width: string, value?: string, label?: string) {
     switch (size) {
       case "small":
