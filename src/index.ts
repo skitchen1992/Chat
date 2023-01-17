@@ -6,6 +6,7 @@ import { ProfilePage} from "./pages/profile";
 import { SettingsPage } from "./pages/settings";
 import { ChangePasswordPage} from "./pages/changePassword";
 import { MessengerPage } from "./pages/messenger";
+import { Page404 } from "./pages/page404";
 
 export enum Routes {
   Index = "/",
@@ -13,7 +14,8 @@ export enum Routes {
   Profile = "/profile",
   Settings = "/settings",
   Password = "/password",
-  Messenger = "/messenger"
+  Messenger = "/messenger",
+  Page404 = "/404"
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -23,8 +25,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Settings, SettingsPage)
     .use(Routes.Password, ChangePasswordPage)
-    .use(Routes.Messenger, MessengerPage);
-
+    .use(Routes.Messenger, MessengerPage)
+    .use(Routes.Page404, Page404);
 
   let isProtectedRoute = true;
 

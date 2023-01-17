@@ -83,9 +83,9 @@ class Router {
     const route = this.getRoute(pathname);
 
     if (!route) {
-      // if (this.defaultBlock) {
-      //   this.go("/404");
-      // }
+      if ("/") {
+        this.go("/404");
+      }
       return;
     }
 
