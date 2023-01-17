@@ -71,6 +71,7 @@ class ChatController {
   async delete(id: number) {
     try {
       await this.api.delete(id);
+      store.set(`selectedChat`, null);
       await this.getChatList();
     } catch (e) {
       console.error(e);
