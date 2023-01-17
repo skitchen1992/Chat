@@ -6,6 +6,10 @@ import { validationPatterns } from "../../utils/validationPatterns";
 import template from "./login.pug";
 import * as styles from "./login.scss";
 import { ErrorMessage } from "../../components/errorMessage";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
+import AuthController from "../../controllers/AuthController";
+import { SigninData } from "../../api/AuthAPI";
 
 interface ILoginProps {
   title: string;
@@ -26,10 +30,10 @@ export class LoginPage extends Block <ILoginProps> {
       }
     });
 
-    this.children.a = new ButtonLink({
+    this.children.register = new ButtonLink({
       label: "Еще не зарегестрированы?",
       events: {
-        click: () => console.log("ButtonLink")
+        click: () => Router.go(Routes.Register)
       }
     });
 
@@ -76,7 +80,7 @@ export class LoginPage extends Block <ILoginProps> {
     const isPasswordValid = this.isValid(form.password as string, "password");
 
     if (isLoginValid && isPasswordValid) {
-      console.log("formData", form);
+      AuthController.signin(form as SigninData);
     }
     if (!isLoginValid) {
       (this.children.inputLogin as Block).setProps({ error: true });

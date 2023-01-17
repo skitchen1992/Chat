@@ -6,9 +6,12 @@ import * as styles from "./registration.scss";
 import { Button } from "../../components/button";
 import { ButtonLink } from "../../components/buttonLink";
 import { Input } from "../../components/input";
+import AuthController from "../../controllers/AuthController";
+import Router from "../../utils/Router";
+import { Routes } from "../../index";
+import { SignupData } from "../../api/AuthAPI";
 
 interface IRegistrationProps {
-  title: string;
 }
 
 export class RegistrationPage extends Block <IRegistrationProps> {
@@ -29,7 +32,7 @@ export class RegistrationPage extends Block <IRegistrationProps> {
     this.children.buttonEnter = new ButtonLink({
       label: "Войти",
       events: {
-        click: () => console.log("ButtonLink")
+        click: () => Router.go(Routes.Index)
       }
     });
 
@@ -137,14 +140,14 @@ export class RegistrationPage extends Block <IRegistrationProps> {
 
     const isEmailValid = this.isValid(form.email as string, "email");
     const isLoginValid = this.isValid(form.login as string, "login");
-    const isFirstNameValid = this.isValid(form.firstName as string, "first_name");
+    const isFirstNameValid = this.isValid(form.first_name as string, "first_name");
     const isSecondNameValid = this.isValid(form.second_name as string, "second_name");
     const isPhoneValid = this.isValid(form.phone as string, "phone");
     const isPasswordValid = this.isValid(form.password as string, "password");
     const isPasswordElse = this.isValid(form.passwordElse as string, "passwordElse");
 
     if (isLoginValid && isPasswordValid && isEmailValid && isFirstNameValid && isSecondNameValid && isPhoneValid && isPasswordElse && form.password === form.passwordElse) {
-      console.log("formData", form);
+      AuthController.signup(form as SignupData);
     }
 
     if (!isEmailValid) {
@@ -232,13 +235,13 @@ export class RegistrationPage extends Block <IRegistrationProps> {
 
     const email = formData.get("email");
     const login = formData.get("login");
-    const firstName = formData.get("first_name");
-    const secondName = formData.get("second_name");
+    const first_name = formData.get("first_name");
+    const second_name = formData.get("second_name");
     const phone = formData.get("phone");
     const password = formData.get("password");
     const passwordElse = formData.get("passwordElse");
 
-    return { email, login, firstName, second_name: secondName, phone, password, passwordElse };
+    return { email, login, first_name, second_name, phone, password, passwordElse };
   }
 
   validate(event: Event, setProps: (nextProps: any) => void, block: Block) {
@@ -289,6 +292,6 @@ export class RegistrationPage extends Block <IRegistrationProps> {
   }
 
   render() {
-    return this.compile(template, { title: this.props.title, styles });
+    return this.compile(template, { title: "Регистрация", styles });
   }
 }
