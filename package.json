@@ -16,9 +16,6 @@
   },
   "keywords": [],
   "author": "",
-  "engines": {
-    "node": ">=12"
-  },
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "nightly",
