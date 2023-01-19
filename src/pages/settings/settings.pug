@@ -5,27 +5,34 @@
         form#changeProfile__form.changeProfile__form
             .changeProfile__account-logo
                 img(src=account, alt="account")
+            .changeProfile__file
+                | !{inputFile}
             .changeProfile__info
                 .changeProfile__info__item
                     .changeProfile__info__item__label Почта
                     .changeProfile__info__item__value
                         | !{inputPost}
+                        | !{errorMessagePost}
                 .changeProfile__info__item
                     .changeProfile__info__item__label Логин
                     .changeProfile__info__item__value
                         | !{inputLogin}
+                        | !{errorMessageLogin}
                 .changeProfile__info__item
                     .changeProfile__info__item__label Имя
                     .changeProfile__info__item__value
                         | !{inputFirstName}
+                        | !{errorMessageFirstName}
                 .changeProfile__info__item
                     .changeProfile__info__item__label Фамилия
                     .changeProfile__info__item__value
                         | !{inputSecondName}
+                        | !{errorMessageSecondName}
                 .changeProfile__info__item
                     .changeProfile__info__item__label Телефон
                     .changeProfile__info__item__value
                         | !{inputPhone}
+                        | !{errorMessagePhone}
             .changeProfile__actions
                 .changeProfile__actions__wrap
                     | !{buttonSave}

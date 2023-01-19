@@ -5,7 +5,7 @@
   height: 86px;
   width: 100%;
   gap: 8px;
-  border-bottom: 1px solid $backGroundInput;
+  border: 1px solid $backGroundInput;
   padding: 12px;
   background-repeat: no-repeat;
   background-position: 4px;
@@ -14,7 +14,8 @@
 }
 
 .logo {
-  width: 48px;
+  width: 40px;
+  min-width: 40px;
 }
 
 .content {

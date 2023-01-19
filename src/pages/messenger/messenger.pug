@@ -1,0 +1,39 @@
+.chat
+    .chat__sideBar
+        .chat__sideBar__wrap
+            .chat__action
+                | !{buttonProfile}
+            .chat__search
+                | !{search}
+            .chat__button
+                | !{buttonAddChat}
+        .chat__userList
+            if loading
+                | !{loader}
+            else
+                each chat in chatList
+                    | !{chat}
+    .chat__main
+        .chat__main__header
+            .chat__main__header__label
+                .chat__main__header__logo
+                    img(src=logo )
+                .chat__main__header__name= first_name
+            if selectedChat
+                .chat__main__header__actions
+                    | !{topDropdownButton}
+        if selectedChat
+            .chat__main__messageList
+              each message in messages
+                  | !{message}
+            .chat__main__actions
+                | !{messageInput}
+                | !{messageButton}
+        else
+            .chat__main__choose_chat Выберите чат
+    | !{addUserModal}
+    | !{removeUserModal}
+    | !{addChatModal}
+    | !{removeChatModal}
+
+

@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
   }
 
   &__content {

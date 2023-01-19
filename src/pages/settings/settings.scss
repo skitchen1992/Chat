@@ -37,7 +37,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
   }
 
   &__content {
@@ -52,6 +52,10 @@
       width: 100px;
       height: 100px;
     }
+  }
+  &__file {
+    display: flex;
+    justify-content: center;
   }
 
   &__info {

@@ -5,59 +5,68 @@ import { ButtonLink } from "../../components/buttonLink";
 import arrow from "../../../public/icons/arrow.png";
 import account from "../../../public/icons/account.png";
 import { Button } from "../../components/button";
+import { Routes } from "../../index";
+import Router from "../../utils/Router";
+import AuthController from "../../controllers/AuthController";
+import { withStore } from "../../utils/Store";
+import { IUser } from "../../api/AuthAPI";
+import { getUserInfoList } from "./getProfileList";
+import HTTPTransport from "../../utils/HTTPTransport";
 
-interface IProfileList {
-  label: string,
-  value: string
-}
-
-interface IProfileProps {
-  profileName: string;
-  profileList: IProfileList[];
-}
-
-export class ProfilePage extends Block <IProfileProps> {
-  constructor(props: IProfileProps) {
+class ProfilePageBase extends Block <IUser> {
+  constructor(props: IUser) {
     super("div", props);
-
   }
 
   init() {
+    AuthController.fetchUser();
+
     this.children.buttonBack = new Button({
       icon: arrow,
       variant: "round",
       events: {
-        click: () => console.log("buttonBack")
+        click: () => Router.go(Routes.Messenger)
       }
     });
-    this.children.buttonDate = new ButtonLink({
+
+    this.children.buttonSettings = new ButtonLink({
       label: "Изменить данные",
       events: {
-        click: () => console.log("Изменить данные")
+        click: () => Router.go(Routes.Settings)
       }
     });
+
     this.children.buttonPass = new ButtonLink({
       label: "Изменить пароль",
       events: {
-        click: () => console.log("Изменить пароль")
+        click: () => Router.go(Routes.Password)
       }
     });
+
     this.children.buttonExit = new ButtonLink({
       label: "Выйти",
       variant: "alert",
       events: {
-        click: () => console.log("Выйти")
+        click: () => AuthController.logout()
       }
     });
+  }
 
+  getUserInfoList() {
+    return getUserInfoList(this.props);
   }
 
   render() {
+    const user = this.props;
     return this.compile(template, {
-      profileName: this.props.profileName,
-      account: account,
+      profileName: this.props.first_name,
       styles,
-      profileList: this.props.profileList
+      userInfoList: this.getUserInfoList(),
+      logo: user?.avatar ? `${HTTPTransport.API_URL}/resources${user?.avatar}` : account
     });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const ProfilePage = withUser(ProfilePageBase);

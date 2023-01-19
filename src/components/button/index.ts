@@ -4,7 +4,7 @@ import * as styles from "./button.scss";
 
 type IVariant = "round" | "contained" | "icon"
 
-interface IButtonProps {
+interface IButtonProps  {
   label?: string
   events?: {
     click?: (e: Event) => void,

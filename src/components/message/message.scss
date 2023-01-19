@@ -1,0 +1,16 @@
+@import "src/styleVariables/styleVariables";
+
+.message {
+  display: flex;
+  min-width: 100px;
+  max-width: 80%;
+  width: fit-content;
+  padding: 8px;
+  border-radius: $borderRadiusMessage;
+  background-color: $fill_second_color;
+}
+
+.message--mine {
+  align-self: flex-end;
+  background-color: $fig;
+}

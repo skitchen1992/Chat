@@ -11,7 +11,7 @@ interface IButtonProps {
   href?: string;
 }
 
-export class ButtonLink extends Block <IButtonProps> {
+export class ButtonLink extends Block<IButtonProps> {
   constructor(props: IButtonProps) {
     super("a", props);
     const { variant = "primary" } = this.props;
