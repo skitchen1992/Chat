@@ -67,6 +67,7 @@
       &__logo {
         width: 34px;
         font-weight: $font-weight-bold;
+        object-fit: cover;
       }
 
       &__name {

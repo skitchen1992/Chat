@@ -8,9 +8,11 @@ interface IInputProps {
     blur?: (e: Event) => void,
     focus?: (e: Event) => void,
     input?: (e: Event) => void,
+    change?:(e: Event) => void,
+
   };
   disabled?: boolean;
-  type: "text" | "password";
+  type: "text" | "password" | "file";
   name: string;
   size?: "small" | "medium";
   value?: string;
@@ -24,7 +26,7 @@ export class Input extends Block <IInputProps> {
 
   }
 
-  addAttribute(type: "text" | "password", name: string, disabled: boolean) {
+  addAttribute(type: "text" | "password" | "file", name: string, disabled: boolean) {
 
     this.element!.setAttribute("id", this.id);
     this.element!.setAttribute("type", type);
@@ -57,7 +59,11 @@ export class Input extends Block <IInputProps> {
     return (this.element as HTMLInputElement).value;
   }
 
-  setInputSize(size: "small" | "medium", width: string, value?: string, label?: string) {
+  public getFiles() {
+    return (this.element as HTMLInputElement).files;
+  }
+
+  setInputSize(size: "small" | "medium" | "default", width: string, value?: string, label?: string) {
     switch (size) {
       case "small":
         this.element!.classList.add("inputSmall");
@@ -89,7 +95,7 @@ export class Input extends Block <IInputProps> {
       disabled = false,
       label,
       name,
-      size = "medium",
+      size = "default",
       value,
       width = "176px",
       error = false
@@ -101,6 +107,6 @@ export class Input extends Block <IInputProps> {
 
     this.setError(error);
 
-    return this.compile(template, { input: null, styles });
+    return this.compile(template, { styles });
   }
 }

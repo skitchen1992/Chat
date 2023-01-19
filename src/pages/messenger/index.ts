@@ -30,6 +30,7 @@ import { RemoveUserModal } from "../../components/modals/RemoveUserModal";
 import { RemoveChatModal } from "../../components/modals/RemoveChatModal";
 import { AddChatModal } from "../../components/modals/AddChatModal";
 import { Loader } from "../../components/loader";
+import HTTPTransport from "../../utils/HTTPTransport";
 
 interface IMessenger {
   chatList: IChat[],
@@ -182,11 +183,11 @@ class MessengerBase extends Block <IMessenger> {
 
   render() {
     const { user, loading, selectedChat } = this.props;
-
+    console.log(user.avatar);
     return this.compile(template, {
       account,
       styles,
-      logo: user?.avatar || userLogo,
+      logo: user?.avatar ? `${HTTPTransport.API_URL}/resources${user?.avatar}` : userLogo,
       first_name: user?.first_name,
       loading,
       selectedChat

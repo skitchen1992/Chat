@@ -3,6 +3,8 @@ import Block from "../../utils/Block";
 import template from "./chat.pug";
 import * as styles from "./chat.scss";
 import { withStore } from "../../utils/Store";
+import HTTPTransport from "../../utils/HTTPTransport";
+import userLogo from "../../../public/icons/user.png";
 
 interface IChatProps {
   chatTitle: string,
@@ -37,7 +39,7 @@ class ChatBase extends Block <IChatProps> {
     return this.compile(template, {
       label: "Text",
       styles,
-      avatar: avatar || user,
+      avatar: avatar ? `${HTTPTransport.API_URL}/resources${avatar}` : userLogo,
       chatTitle,
       message,
       unread_count,

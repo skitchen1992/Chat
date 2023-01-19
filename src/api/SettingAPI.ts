@@ -1,8 +1,8 @@
 import BaseAPI from "./BaseAPI";
 
 export interface ChangePasswordData {
-  oldPassword: string
-  newPassword: string
+  oldPassword: string;
+  newPassword: string;
 }
 
 export interface ChangeProfileData {
@@ -11,29 +11,26 @@ export interface ChangeProfileData {
   display_name: string;
   login: string;
   email: string;
+  avatar?: string
 }
 
 export class SettingAPI extends BaseAPI {
   constructor() {
-    super('/user');
+    super("/user");
   }
 
   changePassword(data: ChangePasswordData) {
-    return this.http.put('/password', data);
+    return this.http.put("/password", data);
   }
 
   changeProfile(data: ChangeProfileData) {
-    return this.http.put('/profile', data);
-  }
-
-  changeAvatar(data: ChangeProfileData) {
-    return this.http.put('/profile/avatar', data);
+    return this.http.put("/profile", data);
   }
 
   create = undefined;
   update = undefined;
   delete = undefined;
-  read = undefined
+  read = undefined;
 }
 
 export default new SettingAPI();

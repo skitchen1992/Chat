@@ -2,6 +2,7 @@ import API, { ChangePasswordData, ChangeProfileData, SettingAPI } from "../api/S
 import { Routes } from "../index";
 import router from "../utils/Router";
 import store from "../utils/Store";
+import HTTPTransport from "../utils/HTTPTransport";
 
 export class SettingController {
   private readonly api: SettingAPI;
@@ -33,13 +34,18 @@ export class SettingController {
     }
   }
 
-  async changeAvatar(data: ChangeProfileData) {
+  async changeAvatar(formData: FormData) {
     try {
-      const user = await this.api.changeProfile(data);
+      const user = await fetch(`${HTTPTransport.API_URL}/user/profile/avatar`, {
+        method: "PUT",
+        credentials: "include",
+        mode: "cors",
+        body: formData
+      });
 
       store.set("user", user);
 
-      router.go(Routes.Messenger);
+      router.go(Routes.Profile);
     } catch (e: any) {
       console.error(e.message);
     }

@@ -11,6 +11,7 @@ import AuthController from "../../controllers/AuthController";
 import { withStore } from "../../utils/Store";
 import { IUser } from "../../api/AuthAPI";
 import { getUserInfoList } from "./getProfileList";
+import HTTPTransport from "../../utils/HTTPTransport";
 
 class ProfilePageBase extends Block <IUser> {
   constructor(props: IUser) {
@@ -56,11 +57,12 @@ class ProfilePageBase extends Block <IUser> {
   }
 
   render() {
+    const user = this.props;
     return this.compile(template, {
       profileName: this.props.first_name,
-      account: account,
       styles,
-      userInfoList: this.getUserInfoList()
+      userInfoList: this.getUserInfoList(),
+      logo: user?.avatar ? `${HTTPTransport.API_URL}/resources${user?.avatar}` : account
     });
   }
 }

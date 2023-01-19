@@ -1,5 +1,5 @@
 import { IUser } from "../../api/AuthAPI";
-import  SettingController  from "../../controllers/SettingController";
+import SettingController from "../../controllers/SettingController";
 import Block from "../../utils/Block";
 import { withStore } from "../../utils/Store";
 import { validationPatterns } from "../../utils/validationPatterns";
@@ -32,6 +32,17 @@ class SettingsPageBase extends Block <IUser> {
       label: "Сохранить",
       events: {
         click: () => this.onSubmit()
+      }
+    });
+
+    this.children.inputFile = new Input({
+      type: "file",
+      name: "file",
+      width: "135px",
+      events: {
+        change: () => {
+          this.sendFile();
+        }
       }
     });
 
@@ -91,6 +102,18 @@ class SettingsPageBase extends Block <IUser> {
     });
   }
 
+  sendFile() {
+    const input = this.children.inputFile as Input;
+    const file = input?.getFiles();
+    const formData = new FormData();
+
+    if (file) {
+      formData.append("avatar", file[0], `${file[0].name}`);
+    }
+
+    SettingController.changeAvatar(formData);
+  }
+
   validate(event: Event, setProps: (nextProps: any) => void) {
 
     const target = event.target as HTMLInputElement;
@@ -143,7 +166,7 @@ class SettingsPageBase extends Block <IUser> {
     const isPhoneValid = this.isValid(form.phone, "phone");
 
     if (isLoginValid && isEmailValid && isFirstNameValid && isSecondNameValid && isPhoneValid) {
-      SettingController.changeProfile(form)
+      SettingController.changeProfile(form);
     }
 
     (this.children.inputPost as Block).setProps({ error: !isEmailValid });
