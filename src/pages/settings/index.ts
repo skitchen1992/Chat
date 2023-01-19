@@ -11,6 +11,7 @@ import { Input } from "../../components/input";
 import arrow from "../../../public/icons/arrow.png";
 import { Routes } from "../../index";
 import Router from "../../utils/Router";
+import { ErrorMessage } from "../../components/errorMessage";
 
 class SettingsPageBase extends Block <IUser> {
   constructor(props: IUser) {
@@ -38,6 +39,7 @@ class SettingsPageBase extends Block <IUser> {
     this.children.inputFile = new Input({
       type: "file",
       name: "file",
+      size: "default",
       width: "135px",
       events: {
         change: () => {
@@ -52,9 +54,13 @@ class SettingsPageBase extends Block <IUser> {
       name: "email",
       size: "small",
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps, this.children.errorMessagePost as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputPost as Block).setProps, this.children.errorMessagePost as Block)
       }
+    });
+
+    this.children.errorMessagePost = new ErrorMessage({
+      label: "Не корректная почта"
     });
 
     this.children.inputLogin = new Input({
@@ -63,9 +69,13 @@ class SettingsPageBase extends Block <IUser> {
       size: "small",
       value: this.props.login,
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputLogin as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputLogin as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputLogin as Block).setProps, this.children.errorMessageLogin as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputLogin as Block).setProps, this.children.errorMessageLogin as Block)
       }
+    });
+
+    this.children.errorMessageLogin = new ErrorMessage({
+      label: "От 3 до 20 символов, латиница"
     });
 
     this.children.inputFirstName = new Input({
@@ -74,9 +84,13 @@ class SettingsPageBase extends Block <IUser> {
       size: "small",
       value: this.props.first_name,
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps, this.children.errorMessageFirstName as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputFirstName as Block).setProps, this.children.errorMessageFirstName as Block)
       }
+    });
+
+    this.children.errorMessageFirstName = new ErrorMessage({
+      label: "Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр"
     });
 
     this.children.inputSecondName = new Input({
@@ -85,9 +99,13 @@ class SettingsPageBase extends Block <IUser> {
       size: "small",
       value: this.props.second_name,
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps, this.children.errorMessageSecondName as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputSecondName as Block).setProps, this.children.errorMessageSecondName as Block)
       }
+    });
+
+    this.children.errorMessageSecondName = new ErrorMessage({
+      label: "Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр"
     });
 
     this.children.inputPhone = new Input({
@@ -96,9 +114,13 @@ class SettingsPageBase extends Block <IUser> {
       size: "small",
       value: this.props.phone,
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputPhone as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputPhone as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputPhone as Block).setProps, this.children.errorMessagePhone as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputPhone as Block).setProps, this.children.errorMessagePhone as Block)
       }
+    });
+
+    this.children.errorMessagePhone = new ErrorMessage({
+      label: "От 10 до 15 символов, состоит из цифр, может начинается с плюса."
     });
   }
 
@@ -114,7 +136,7 @@ class SettingsPageBase extends Block <IUser> {
     SettingController.changeAvatar(formData);
   }
 
-  validate(event: Event, setProps: (nextProps: any) => void) {
+  validate(event: Event, setProps: (nextProps: any) => void, block: Block) {
 
     const target = event.target as HTMLInputElement;
     const field = target.name;
@@ -123,6 +145,7 @@ class SettingsPageBase extends Block <IUser> {
       if (!this.isValid(target.value, field)) {
 
         setProps({ error: true });
+        block.show();
 
         this.setDisableButton(true);
       }
@@ -132,6 +155,7 @@ class SettingsPageBase extends Block <IUser> {
       if (target.classList.contains("invalid")) {
 
         setProps({ error: false });
+        block.hide();
 
         this.setDisableButton(false);
       }

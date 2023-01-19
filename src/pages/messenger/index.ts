@@ -174,16 +174,18 @@ class MessengerBase extends Block <IMessenger> {
 
   sendMassage() {
     const input = this.children.messageInput as Input;
+    const button = this.children.messageButton as Button;
     const message = input.getValue();
 
     input.setValue("");
+    button.setProps({disabled: true})
 
     MessagesController.sendMessage(this.props.selectedChat!, message);
   }
 
   render() {
     const { user, loading, selectedChat } = this.props;
-    console.log(user.avatar);
+
     return this.compile(template, {
       account,
       styles,

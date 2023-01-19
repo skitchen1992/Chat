@@ -11,7 +11,7 @@ export interface ChangeProfileData {
   display_name: string;
   login: string;
   email: string;
-  avatar?: string
+  avatar?: string;
 }
 
 export class SettingAPI extends BaseAPI {

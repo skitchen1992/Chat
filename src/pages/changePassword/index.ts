@@ -47,9 +47,13 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       name: "password",
       size: "small",
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputPassword as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputPassword as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputPassword as Block).setProps, this.children.errorMessagePassword as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputPassword as Block).setProps, this.children.errorMessagePassword as Block)
       }
+    });
+
+    this.children.errorMessagePassword = new ErrorMessage({
+      label: "Oт 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
     });
 
     this.children.inputNewPassword = new Input({
@@ -57,9 +61,13 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       name: "newPassword",
       size: "small",
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputNewPassword as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputNewPassword as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputNewPassword as Block).setProps, this.children.errorMessageNewPassword as Block ),
+        focus: (e: Event) => this.validate(e, (this.children.inputNewPassword as Block).setProps, this.children.errorMessageNewPassword as Block )
       }
+    });
+
+    this.children.errorMessageNewPassword = new ErrorMessage({
+      label: "Oт 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
     });
 
     this.children.inputNewPasswordElse = new Input({
@@ -67,14 +75,18 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       name: "newPasswordElse",
       size: "small",
       events: {
-        blur: (e: Event) => this.validate(e, (this.children.inputNewPasswordElse as Block).setProps),
-        focus: (e: Event) => this.validate(e, (this.children.inputNewPasswordElse as Block).setProps)
+        blur: (e: Event) => this.validate(e, (this.children.inputNewPasswordElse as Block).setProps, this.children.errorMessageNewPasswordElse as Block),
+        focus: (e: Event) => this.validate(e, (this.children.inputNewPasswordElse as Block).setProps, this.children.errorMessageNewPasswordElse as Block)
       }
+    });
+
+    this.children.errorMessageNewPasswordElse = new ErrorMessage({
+      label: "Oт 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра."
     });
   }
 
 
-  validate(event: Event, setProps: (nextProps: any) => void) {
+  validate(event: Event, setProps: (nextProps: any) => void, block: Block) {
 
     const target = event.target as HTMLInputElement;
     const field = target.name;
@@ -83,6 +95,7 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       if (!this.isValid(target.value, field)) {
 
         setProps({ error: true });
+        block.show();
 
         this.setDisableButton(true);
       }
@@ -92,6 +105,7 @@ export class ChangePasswordPage extends Block <IChangePasswordProps> {
       if (target.classList.contains("invalid")) {
 
         setProps({ error: false });
+        block.hide();
 
         this.setDisableButton(false);
       }

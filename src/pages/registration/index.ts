@@ -61,7 +61,7 @@ export class RegistrationPage extends Block <IRegistrationProps> {
     });
 
     this.children.errorMessageLogin = new ErrorMessage({
-      label: "Не корректный логин"
+      label: "От 3 до 20 символов, латиница"
     });
 
     this.children.inputFirstName = new Input({
@@ -103,7 +103,7 @@ export class RegistrationPage extends Block <IRegistrationProps> {
     });
 
     this.children.errorMessagePhone = new ErrorMessage({
-      label: "Не корректный номер"
+      label: "От 10 до 15 символов, состоит из цифр, может начинается с плюса."
     });
 
     this.children.inputPassword = new Input({

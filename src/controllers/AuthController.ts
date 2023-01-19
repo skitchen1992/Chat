@@ -29,14 +29,17 @@ export class AuthController {
 
       router.go(Routes.Messenger);
     } catch (e: any) {
-      console.error(e.message);
+      console.error(e);
     }
   }
 
   async fetchUser() {
-    const user = await this.api.read();
-
-    store.set("user", user);
+    try {
+      const user = await this.api.read();
+      store.set("user", user);
+    } catch (e: any) {
+      console.error(e);
+    }
   }
 
   async logout() {

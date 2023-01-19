@@ -14,7 +14,7 @@ interface IInputProps {
   disabled?: boolean;
   type: "text" | "password" | "file";
   name: string;
-  size?: "small" | "medium";
+  size?: "small" | "medium" | "default";
   value?: string;
   width?: string;
   error?: boolean;
@@ -95,7 +95,7 @@ export class Input extends Block <IInputProps> {
       disabled = false,
       label,
       name,
-      size = "default",
+      size = "medium",
       value,
       width = "176px",
       error = false

@@ -132,8 +132,22 @@ class Block<P extends Record<string, any> = any> {
     return this._element;
   }
 
+  _removeEvents() {
+    const events: Record<string, () => void> = (this.props as any).events;
+
+    if (!events || !this._element) {
+      return;
+    }
+
+
+    Object.entries(events).forEach(([event, listener]) => {
+      this._element!.removeEventListener(event, listener);
+    });
+  }
+
   private _render() {
     const fragment = this.render();
+    this._removeEvents();
 
     this._element!.innerHTML = "";
 

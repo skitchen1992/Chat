@@ -17,6 +17,15 @@ type Options = {
   headers?: Headers
 };
 
+type OptionsWithoutMethod = Omit<Options, "method">;
+
+const queryStringify = (data: Record<string, string>) => {
+  return "? " + Object
+    .entries(data)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&");
+};
+
 export default class HTTPTransport {
   static API_URL = "https://ya-praktikum.tech/api/v2";
   protected endpoint: string;
@@ -25,44 +34,54 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = "/"): Promise<Response> {
-    return this.request<Response>(this.endpoint + path);
+  public get<Response>(path = "/", options: OptionsWithoutMethod = {}): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, { ...options, method: Method.Get }, options.timeout);
   }
 
-  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
+  public post<Response = void>(path: string, data?: unknown, options: OptionsWithoutMethod = {}): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.Post,
-      data
-    });
+        method: Method.Post,
+        data
+      }, options.timeout
+    );
   }
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+  public put<Response = void>(path: string, data: unknown, options: OptionsWithoutMethod = {}): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.Put,
-      data
-    });
+        method: Method.Put,
+        data
+      }, options.timeout
+    );
   }
 
-  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
+  public patch<Response = void>(path: string, data: unknown, options: OptionsWithoutMethod = {}): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.Patch,
-      data
-    });
+        method: Method.Patch,
+        data
+      }, options.timeout
+    );
   }
 
-  public delete<Response>(path: string, data?: unknown): Promise<Response> {
+  public delete<Response>(path: string, data?: unknown, options: OptionsWithoutMethod = {}): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.Delete,
-      data
-    });
+        method: Method.Delete,
+        data
+      }, options.timeout
+    );
   }
 
-  private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
-    const { method, data } = options;
+  private request<Response>(url: string, options: Options = { method: Method.Get }, timeout = 5000): Promise<Response> {
+    const { headers = { "Content-Type": "application/json" }, method, data } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      const isGet = method === Method.Get;
+      xhr.open(
+        method,
+        isGet && !!data
+          ? `${url}${queryStringify(data)}`
+          : url
+      );
 
       xhr.onreadystatechange = (e) => {
 
@@ -79,7 +98,9 @@ export default class HTTPTransport {
       xhr.onerror = () => reject({ reason: "network error" });
       xhr.ontimeout = () => reject({ reason: "timeout" });
 
-      xhr.setRequestHeader("Content-Type", "application/json");
+      Object.keys(headers).forEach(key => {
+        xhr.setRequestHeader(key, headers[key]);
+      });
 
       xhr.withCredentials = true;
       xhr.responseType = "json";
