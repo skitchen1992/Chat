@@ -14,9 +14,9 @@ Run app
 $ npm start
 ```
 
-### Netlify
+### URL
 
-https://deploy-preview-16--sendmeyou.netlify.app/
+https://chatnl.onrender.com/messenger
 
 ### Layout
 
