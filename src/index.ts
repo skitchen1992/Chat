@@ -7,6 +7,7 @@ import { SettingsPage } from "./pages/settings";
 import { ChangePasswordPage} from "./pages/changePassword";
 import { MessengerPage } from "./pages/messenger";
 import { Page404 } from "./pages/page404";
+import '../public/reset.scss';
 
 export enum Routes {
   Index = "/",
